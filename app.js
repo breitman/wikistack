@@ -19,10 +19,10 @@ then(() =>{
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use('/wiki', wikiRouter);
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 
 app.get("/", (req, res) =>{
-  res.send(layout(""));
+  res.redirect('/wiki');
 });
 
 const PORT = 3000;
