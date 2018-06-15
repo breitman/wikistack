@@ -8,12 +8,15 @@ const models = require("./models");
 const wikiRouter = require("./routes/wiki");
 const userRouter = require("./routes/user");
 
+const bodyParser = require("body-parser");
+
 
 models.db.authenticate().
 then(() =>{
   console.log('connected to the database');
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use('/wiki', wikiRouter);
 app.use('/user', userRouter);
@@ -25,7 +28,7 @@ app.get("/", (req, res) =>{
 const PORT = 3000;
 
 const init = async () =>{
-  await models.db.sync({force: true});
+  await models.db.sync({force: false}); //deletes models from db on every refresh
   app.listen(PORT, () =>{
     console.log(`App listening to Port: ${PORT}`);
   });

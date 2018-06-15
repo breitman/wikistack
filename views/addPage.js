@@ -13,7 +13,7 @@ module.exports = () => layout(html`
 
     <div>
       <label for="email">Email </label>
-      <input type="text" name="email"/>
+      <input type="email" name="email"/>
     </div>
 
     <div class="form-group">
@@ -24,10 +24,13 @@ module.exports = () => layout(html`
     </div>
 
     <div>
+      <label for="content">Content</label>
       <textarea name="content"></textarea>
     </div>
-
-    <div>PLACEHOLDER FOR PAGE STATUS INPUT FIELD</div>
+    <div>
+      <label for="status">Status</label>
+      <input type="button" name="status"/>
+    </div>
 
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">submit</button>
